@@ -21,8 +21,72 @@ universities_df = get_university_dataframe(recommender.university_dict)
 
 university_data = universities_df.groupby("Academy")["CourseNameShort"].apply(list).to_dict()
 
-st.title("UniForMe")
-st.write("Welcome to UniForMe, a university recommendation system that helps you find the best german universities for masters in computer science courses based on your preferences.")
+title_style = """
+    <style>
+    .title-container {
+        text-align: center;
+        margin-top: -50px;
+        margin-bottom: 20px;
+    }
+    .title {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #FF4B4B; /* Cool red color */
+    }
+    .subtitle {
+        font-size: 1.5rem;
+        color: #6C757D; /* Cool grey for the subtitle */
+        font-style: italic;
+    }
+    </style>
+"""
+st.markdown(title_style, unsafe_allow_html=True)
+st.markdown(
+    """
+    <div class="title-container">
+        <div class="title">UniForMe</div>
+        <div class="subtitle">Your Personalized University Recommendation System</div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+# Custom CSS for the landing page description
+description_style = """
+    <style>
+    .description-container {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .description-text {
+        font-size: 1.2rem;
+        color: #6C757D;
+        line-height: 1.8;
+        margin-top: 10px;
+    }
+    </style>
+"""
+
+st.markdown(description_style, unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <div class="description-container">
+        <div class="description-text">
+            UniForMe is an AI-driven university recommendation system designed to help you discover the best German universities 
+            for pursuing a master's degree in computer science. Tailored to your preferences, the system considers factors like 
+            job density, travel connections, and city importance to provide personalized recommendations.
+            <br><br>
+            Whether you're looking for a vibrant city with ample job opportunities or a quiet town with a strong academic focus, 
+            UniForMe ensures you make an informed decision for your future. Let's find your dream university together!
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
 user_preference, check_university_neighbour, by_university, by_description = st.tabs(["By User Preference", "Check University Neighbour", "By University", "By Description"])
 
